@@ -9,7 +9,7 @@ import java.util.*;
 public class FirstSeleniumTest {
     public static void main(String[] args) throws InterruptedException {
         // TODO Auto-generated method stub
-        System.out.println("Open Maven Website");
+        System.out.println("Open Facebook Website");
 
         //create instance of chromeDriver class
         //interface referencevariable=new implemnetdclass();
@@ -31,11 +31,11 @@ public class FirstSeleniumTest {
 
         //Current page source code
         String src = driver.getPageSource();
-       //System.out.println("current page source is: "+src);
+        System.out.println("current page source is: "+src);
 
         //fetch current window  id ( Interview question)
         String wid=driver.getWindowHandle();
-        System.out.println("current page window iud is: "+wid);
+        System.out.println("current page window id is: "+wid);
 
         //fetch all the opened window id's
         Set<String>handles = driver.getWindowHandles();
@@ -59,7 +59,7 @@ public class FirstSeleniumTest {
         WebElement passInput = driver.findElement(By.id("pass"));
         passInput.clear();
         //Input password
-        passInput.sendKeys("aaaa");
+        passInput.sendKeys("bbbb");
 
         WebElement loginbutton = driver.findElement(By.id("loginbutton"));
         loginbutton.click();
