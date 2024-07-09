@@ -12,7 +12,7 @@ public class FirstSeleniumTest {
         System.out.println("Open Facebook Website");
 
         //create instance of chromeDriver class
-        //interface referencevariable=new implemnetdclass();
+        //interface referencevariable=new implementedclass();
         WebDriver driver = new ChromeDriver();
 
         //Maximize the browser
