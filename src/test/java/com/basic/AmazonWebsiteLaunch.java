@@ -3,22 +3,28 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.IOException;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 
 public class AmazonWebsiteLaunch
 {
-    static WebDriver driver;
-   static JavascriptExecutor jsx ;
+   static WebDriver driver;  // Static WebDriver instance
+   static JavascriptExecutor jsx ; //Static JavascriptExecutor instance
+   static WebDriverWait wait; //Static WebDriverWait instance
 
     // initialize WebDriver
-    public static void driverInit(WebDriver driverInstance) {
+    public static void driverInit(WebDriver driverInstance)
+    {
         driver = driverInstance;
         driver.manage().window().maximize();
     }
     //Launch amazon website
-    public static void launchApp(String appName) {
+    public static void launchApp(String appName)
+    {
         // Open the given URL in the browser
         driver.get(appName);
     }
@@ -26,7 +32,6 @@ public class AmazonWebsiteLaunch
     public static String verifyPageTitle(String pageTitle1)
     {
         String title = driver.getTitle();
-
         if(title.contains(pageTitle1))
         {
             System.out.println("Title contains the word " +pageTitle1+ ". Test case passed.");
@@ -40,6 +45,9 @@ public class AmazonWebsiteLaunch
     //parametarised method to select the options from the department dropdown
     public static void selectDropdownOption(By loc, String optionValue)
     {
+        wait=new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.presenceOfElementLocated(loc));
+
         //shortcut in intellij is type sout and press tab
         //find dropdownbox or select box
         WebElement dropdownrefname=driver.findElement(loc);
@@ -63,8 +71,8 @@ public class AmazonWebsiteLaunch
         WebElement searchIcon= driver.findElement(By.id("nav-search-submit-button"));
         searchIcon.click();
     }
-    public static String verifyPageTitle(String pageTitle2, String subpage)  {
-
+    public static String verifyPageTitle(String pageTitle2, String subpage)
+    {
         String title = driver.getTitle();
         if(title.contains(pageTitle2))
         {
@@ -113,40 +121,33 @@ public class AmazonWebsiteLaunch
         jsx = (JavascriptExecutor) driver;
         jsx.executeScript("arguments[0].scrollIntoView(true);", searchResultsNumber);
         captureScreenshot("SearchItems");
-
     }
-    public static void scrollPage() throws IOException {
-       /* Actions actions = new Actions(driver);
-
-        // Scroll down by performing arrow key press (down)
-        actions.sendKeys(Keys.ARROW_DOWN).perform();
-        System.out.println("Arrow down done");
-
-        // Scroll down by performing 'page down' key press
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        System.out.println("pagedown done");*/
-
-        //scroll down
-        jsx = (JavascriptExecutor) driver;
+    public static void scrollDownPage() throws IOException
+    {
+        jsx = (JavascriptExecutor) driver; //typecasting driver type to JavascriptExecutor type
+        // Scroll down using JavascriptExecutor
         jsx.executeScript("window.scrollBy(0,2000)","");
         captureScreenshot("ScrollDown");
 
-        //scroll up
-       // jsx.executeScript("window.scrollBy(0,-1500)","");
+        // Scroll up using JavascriptExecutor
+        jsx.executeScript("window.scrollBy(0,-1500)","");
+        captureScreenshot("ScrollUp");
 
-        //scroll for back to top element
+        //Scroll for back to top element
         WebElement backToTop = driver.findElement(By.xpath("//span[@class='navFooterBackToTopText'][contains(.,'Back to top')]"));
 
-        //scroll down until you find backToTop text
+        //Scroll down until you find backToTop text
         jsx.executeScript("arguments[0].scrollIntoView(true);", backToTop);
         captureScreenshot("ScrollDownForBackToTopBtn");
     }
-    public static void main(String[] args) throws InterruptedException, IOException {
-        // Initialize WebDriver for Chrome
-        WebDriver chromeDriver = new ChromeDriver();
+    public static void main(String[] args) throws IOException
+    {
+        //create instance of chromeDriver class
+        //interface referencevariable=new implementedclass();
+        driver = new ChromeDriver();
 
         // Initialize WebDriver and open Chrome browser
-        driverInit(chromeDriver);
+        driverInit(driver);
 
         // Launch Amazon website
         launchApp("https://www.amazon.com/");
@@ -172,10 +173,10 @@ public class AmazonWebsiteLaunch
         String searchItem="Iphone";
         searchItems(searchItem);
 
-        //scroll the page down
-        scrollPage();
+        //scroll the page down using JavascriptExecutor
+        scrollDownPage();
 
         // Quit the WebDriver session
-        //driver.quit();//asdsfd
+        //driver.quit();
     }
 }
