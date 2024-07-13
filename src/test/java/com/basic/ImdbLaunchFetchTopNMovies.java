@@ -1,5 +1,5 @@
 package com.basic;
-import static com.basic.AmazonWebsiteLaunch.*;
+import static com.basic.AmazonWebsiteLaunchCaptureScreen.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 
-public class AmazonWebsiteLaunch
+public class AmazonWebsiteLaunchCaptureScreen
 {
    static WebDriver driver;  // Static WebDriver instance
    static JavascriptExecutor jsx ; //Static JavascriptExecutor instance
