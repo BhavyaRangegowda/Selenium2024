@@ -28,12 +28,14 @@
             <version>5.11.0-M2</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.9.0</version>
+            <version>7.10.2</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <!-- Maven Compiler Plugin -->

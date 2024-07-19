@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+    <test name="Regression Tests">
+        <classes>
+            <class name="com.basic.testng.RunonDifferentBrowsers"/>
+            <class name="com.basic.testng.RunonChrome"/>
+            <!-- Add more test classes here -->
+        </classes>
+    </test>
+</suite>
