@@ -31,7 +31,7 @@ public class FirstSeleniumTest {
 
         //Current page source code
         String src = driver.getPageSource();
-        System.out.println("current page source is: "+src);
+       // System.out.println("current page source is: "+src);
 
         //fetch current window  id ( Interview question)
         String wid=driver.getWindowHandle();

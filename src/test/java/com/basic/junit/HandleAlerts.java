@@ -37,6 +37,7 @@ public class HandleAlerts {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='example']/h3")));
         Assertions.assertTrue(driver.findElement(By.xpath("//div[@class='example']/h3")).isDisplayed());
     }
+
     @Test
     public void switchToAlert()
     {
@@ -48,7 +49,6 @@ public class HandleAlerts {
         al.accept();
         verifyConfirmationMessage("You successfully clicked an alert");
     }
-
     @Test
     public void confirmationBox()
     {
@@ -60,7 +60,6 @@ public class HandleAlerts {
         al2.dismiss();
         verifyConfirmationMessage("You clicked: Cancel");
     }
-
     @Test
     public void JsPrompt() throws InterruptedException {
         driver.findElement(By.xpath("//div[@class='example']/ul/li[3]/button")).click();

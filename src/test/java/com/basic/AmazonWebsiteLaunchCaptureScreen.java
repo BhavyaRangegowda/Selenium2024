@@ -130,8 +130,8 @@ public class AmazonWebsiteLaunchCaptureScreen
         captureScreenshot("ScrollDown");
 
         // Scroll up using JavascriptExecutor
-        jsx.executeScript("window.scrollBy(0,-1500)","");
-        captureScreenshot("ScrollUp");
+       // jsx.executeScript("window.scrollBy(0,-1500)","");
+       // captureScreenshot("ScrollUp");
 
         //Scroll for back to top element
         WebElement backToTop = driver.findElement(By.xpath("//span[@class='navFooterBackToTopText'][contains(.,'Back to top')]"));
@@ -139,6 +139,13 @@ public class AmazonWebsiteLaunchCaptureScreen
         //Scroll down until you find backToTop text
         jsx.executeScript("arguments[0].scrollIntoView(true);", backToTop);
         captureScreenshot("ScrollDownForBackToTopBtn");
+    }
+    public static void backToTop()
+    {
+        WebElement backToTopLink=driver.findElement(By.xpath("//span[@class='navFooterBackToTopText']"));
+        backToTopLink.click();
+        driver.navigate().back();
+        driver.navigate().back();
     }
     public static void main(String[] args) throws IOException
     {
@@ -176,6 +183,8 @@ public class AmazonWebsiteLaunchCaptureScreen
         //scroll the page down using JavascriptExecutor
         scrollDownPage();
 
+        //click backtotop link
+        backToTop();
         // Quit the WebDriver session
         //driver.quit();
     }
