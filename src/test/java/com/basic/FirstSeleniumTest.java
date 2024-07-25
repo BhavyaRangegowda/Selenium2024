@@ -1,10 +1,13 @@
 package com.basic;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Navigation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.security.Key;
 import java.util.*;
 public class FirstSeleniumTest {
     public static void main(String[] args) throws InterruptedException {
